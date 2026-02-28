@@ -596,6 +596,79 @@ a:hover {
 }
 
 /* ================================
+   Presentations Section
+   ================================ */
+.presentations {
+    background: var(--white);
+}
+
+.presentations-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: var(--space-md);
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.presentation-card {
+    background: var(--off-white);
+    border-radius: var(--radius-md);
+    padding: var(--space-md);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    border: 2px solid var(--light-gray);
+    transition: all var(--transition-normal);
+}
+
+.presentation-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 8px 8px 0 var(--vibrant-yellow);
+    border-color: var(--vibrant-yellow);
+}
+
+.presentation-title {
+    font-size: 1.25rem;
+    color: var(--charcoal);
+    margin-bottom: var(--space-sm);
+    text-align: center;
+}
+
+.presentation-embed {
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    margin-bottom: var(--space-sm);
+    background: var(--light-gray);
+}
+
+.presentation-embed iframe {
+    display: block;
+    width: 100%;
+    border-radius: var(--radius-sm);
+}
+
+.presentation-link {
+    display: block;
+    text-align: center;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--sky-blue-dark);
+    padding-top: var(--space-xs);
+}
+
+.presentation-link:hover {
+    color: var(--hot-pink);
+}
+
+@media (max-width: 480px) {
+    .presentations-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .presentation-embed iframe {
+        height: 250px;
+    }
+}
+
+/* ================================
    Leadership Section
    ================================ */
 .leadership {
