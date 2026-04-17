@@ -766,6 +766,106 @@ a:hover {
 }
 
 /* ================================
+   Member Spotlight Section
+   ================================ */
+.spotlight {
+    background: linear-gradient(135deg, rgba(74, 191, 237, 0.05) 0%, rgba(119, 211, 245, 0.05) 100%);
+}
+
+.spotlight-card {
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    padding: var(--space-xl);
+    max-width: 900px;
+    margin: 0 auto;
+    position: relative;
+    box-shadow: 0 8px 32px rgba(74, 191, 237, 0.15);
+    border: 2px solid var(--sky-blue-light);
+    transition: all var(--transition-normal);
+}
+
+.spotlight-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 12px 16px 0 var(--sky-blue), 0 8px 32px rgba(74, 191, 237, 0.25);
+    border-color: var(--sky-blue-dark);
+}
+
+.spotlight-badge {
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(135deg, var(--sky-blue) 0%, var(--sky-blue-dark) 100%);
+    color: var(--white);
+    padding: var(--space-sm) var(--space-md);
+    border-radius: var(--radius-md);
+    font-weight: 700;
+    font-size: 0.875rem;
+    box-shadow: 0 4px 15px rgba(74, 191, 237, 0.3);
+    white-space: nowrap;
+}
+
+.spotlight-content {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: var(--space-lg);
+    align-items: center;
+}
+
+.spotlight-photo {
+    margin: 0;
+}
+
+.spotlight-img {
+    width: 240px;
+    height: 240px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid var(--sky-blue-light);
+    box-shadow: 0 8px 24px rgba(74, 191, 237, 0.4);
+    transition: all var(--transition-normal);
+    transform: translateX(-30px);
+    margin-right: 30px;
+}
+
+.spotlight-card:hover .spotlight-img {
+    border-color: var(--sky-blue);
+    box-shadow: 0 12px 32px rgba(74, 191, 237, 0.5);
+}
+
+.spotlight-name {
+    font-size: 2rem;
+    color: var(--charcoal);
+    margin-bottom: var(--space-xs);
+}
+
+.spotlight-role {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--sky-blue-dark);
+    margin-bottom: var(--space-xs);
+}
+
+.spotlight-major {
+    font-size: 0.95rem;
+    color: var(--medium-gray);
+    margin-bottom: var(--space-md);
+}
+
+.spotlight-description {
+    color: var(--dark-gray);
+    line-height: 1.8;
+    margin-bottom: var(--space-md);
+    font-size: 1rem;
+}
+
+.btn-small {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    font-size: 0.95rem;
+}
+
+/* ================================
    Meetings Section
    ================================ */
 .meetings {
@@ -1236,6 +1336,26 @@ a:hover {
         grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
     }
 
+    .spotlight-content {
+        grid-template-columns: 1fr;
+        gap: var(--space-md);
+        text-align: center;
+    }
+
+    .spotlight-img {
+        width: 150px;
+        height: 150px;
+        margin: 0 auto;
+    }
+
+    .spotlight-card {
+        padding: var(--space-lg) var(--space-md);
+    }
+
+    .spotlight-name {
+        font-size: 1.5rem;
+    }
+
     .minutes-item {
         flex-direction: column;
         text-align: center;
@@ -1269,6 +1389,25 @@ a:hover {
 
     .projects-grid {
         grid-template-columns: 1fr;
+    }
+
+    .spotlight-card {
+        padding: var(--space-md);
+    }
+
+    .spotlight-img {
+        width: 120px;
+        height: 120px;
+    }
+
+    .spotlight-name {
+        font-size: 1.25rem;
+    }
+
+    .spotlight-badge {
+        font-size: 0.75rem;
+        padding: 0.5rem 1rem;
+        top: -12px;
     }
 
     .about-highlights {
