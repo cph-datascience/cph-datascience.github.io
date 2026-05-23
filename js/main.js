@@ -73,7 +73,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Observe elements for animation
     const animateElements = document.querySelectorAll(
-        '.leader-card, .meeting-card, .project-card, .minutes-item, .contact-item'
+        '.action-carousel, .flyer-carousel, .leader-card, .meeting-card, .project-card, .minutes-item, .contact-item'
     );
 
     animateElements.forEach(el => {
@@ -104,4 +104,97 @@ document.addEventListener('DOMContentLoaded', function() {
             item.style.transitionDelay = `${index * 0.1}s`;
         });
     });
+
+    // Club in Action carousel
+    const carousel = document.querySelector('.action-carousel');
+    if (carousel) {
+        const track = carousel.querySelector('.carousel-track');
+        const slides = carousel.querySelectorAll('.carousel-slide');
+        const prevButton = carousel.querySelector('.carousel-prev');
+        const nextButton = carousel.querySelector('.carousel-next');
+        const dots = document.querySelectorAll('.carousel-dot');
+        let currentSlide = 0;
+        let autoAdvance;
+
+        const showSlide = (index) => {
+            currentSlide = (index + slides.length) % slides.length;
+            track.style.transform = `translateX(-${currentSlide * 100}%)`;
+
+            slides.forEach((slide, slideIndex) => {
+                slide.classList.toggle('active', slideIndex === currentSlide);
+            });
+
+            dots.forEach((dot, dotIndex) => {
+                dot.classList.toggle('active', dotIndex === currentSlide);
+            });
+        };
+
+        const startAutoAdvance = () => {
+            autoAdvance = window.setInterval(() => {
+                showSlide(currentSlide + 1);
+            }, 10000);
+        };
+
+        const stopAutoAdvance = () => {
+            window.clearInterval(autoAdvance);
+        };
+
+        prevButton.addEventListener('click', () => {
+            showSlide(currentSlide - 1);
+            stopAutoAdvance();
+        });
+
+        nextButton.addEventListener('click', () => {
+            showSlide(currentSlide + 1);
+            stopAutoAdvance();
+        });
+
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                showSlide(index);
+                stopAutoAdvance();
+            });
+        });
+
+        carousel.addEventListener('mouseenter', () => window.clearInterval(autoAdvance));
+        startAutoAdvance();
+    }
+
+    // Event flyer carousel
+    const flyerCarousel = document.querySelector('.flyer-carousel');
+    if (flyerCarousel) {
+        const track = flyerCarousel.querySelector('.flyer-track');
+        const slides = flyerCarousel.querySelectorAll('.flyer-slide');
+        const prevButton = flyerCarousel.querySelector('.flyer-prev');
+        const nextButton = flyerCarousel.querySelector('.flyer-next');
+        const dots = document.querySelectorAll('.flyer-dot');
+        let currentSlide = 0;
+
+        const showSlide = (index) => {
+            currentSlide = (index + slides.length) % slides.length;
+            track.style.transform = `translateX(-${currentSlide * 100}%)`;
+
+            slides.forEach((slide, slideIndex) => {
+                slide.classList.toggle('active', slideIndex === currentSlide);
+            });
+
+            dots.forEach((dot, dotIndex) => {
+                dot.classList.toggle('active', dotIndex === currentSlide);
+            });
+        };
+
+        prevButton.addEventListener('click', () => {
+            showSlide(currentSlide - 1);
+        });
+
+        nextButton.addEventListener('click', () => {
+            showSlide(currentSlide + 1);
+        });
+
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                showSlide(index);
+            });
+        });
+    }
 });
